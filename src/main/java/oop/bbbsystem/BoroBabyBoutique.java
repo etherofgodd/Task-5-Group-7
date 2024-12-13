@@ -377,12 +377,14 @@ public class BoroBabyBoutique extends javax.swing.JFrame {
         }
     }
 
+    // sets the active garment index here, sets the active image and also sets the descriptionTextArea to the current action.
     void view() {
         Garment activeGarment = garments.get(currentTableIndex);
         descriptionTextArea.setText(activeGarment.getDescription());
         displayImage();
     }
 
+    // method to check stock level, this also either disables or enables the sell/add buttons
     void checkStockLevels() {
         Garment activeGarment = garments.get(currentTableIndex);
         addButton.setEnabled(Boolean.TRUE);
@@ -419,6 +421,7 @@ public class BoroBabyBoutique extends javax.swing.JFrame {
         return options;
     }
 
+    // class level method to remove quantity from garment entry stock
     private void doSale(int saleQuantity, Garment activeGarment) {
         activeGarment.decrementStock(saleQuantity);
         String unitSold = String.valueOf(saleQuantity);
@@ -440,6 +443,7 @@ public class BoroBabyBoutique extends javax.swing.JFrame {
         );
     }
 
+    // class level method to add quantity to the garment entry stock
     private void doAdd(int quantity, Garment activeGarment) {
         activeGarment.incrementStock(quantity);
         String unitsAdded = String.valueOf(quantity);
@@ -459,7 +463,7 @@ public class BoroBabyBoutique extends javax.swing.JFrame {
     }
 
     private void quit() {
-        //get user to confirm quit
+        //Get user to confirm quit
         int response = JOptionPane.showConfirmDialog(
                 null,
                 "Click 'OK' button to confirm Quit request",
@@ -479,7 +483,7 @@ public class BoroBabyBoutique extends javax.swing.JFrame {
         }
     }
 
-    // this method is used to display the image of the current item on the label
+    // This method is used to display the image of the current item on the label
     private void displayImage() {
         //clear any text or image in the photo label
         garmentImageLabel.setText("");

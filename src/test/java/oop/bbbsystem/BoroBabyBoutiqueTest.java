@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class BoroBabyBoutiqueTest {
 
-    private final String BBB_FILE_PATH = "data/bbb.dat";
+    private final String BBB_FILE_PATH = "data/test/bbb.dat";
 
     public BoroBabyBoutiqueTest() {
     }
@@ -41,10 +41,31 @@ public class BoroBabyBoutiqueTest {
 
     /**
      * Test of loadData method, of class BoroBabyBoutique.
+     * This check validates the first element in the file and sees if they match.
      * @throws java.lang.Exception
      */
     @Test
     public void testLoadData() throws Exception {
+        System.out.println("loadData - Test if load data is getting values from .bat file");
+
+        BoroBabyBoutique instance = new BoroBabyBoutique();
+
+        // Act: Load the data from the file
+        instance.loadData();
+
+        // Assert: Validate the first item matches the expected data
+        assertTrue(!instance.getGarments().isEmpty(), "The garments list should contain items");
+
+        Garment firstGarment = instance.getGarments().get(0);
+        assertEquals("B_R_12-18_7111", firstGarment.getId(), "The first garment ID should match");
+    }
+    
+     /**
+     * Test of loadData method, of class BoroBabyBoutique.
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testEmptyLoadData() throws Exception {
         System.out.println("loadData - Test if load data is getting values from .bat file");
 
         BoroBabyBoutique instance = new BoroBabyBoutique();
